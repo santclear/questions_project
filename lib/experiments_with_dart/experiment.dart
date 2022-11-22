@@ -1,3 +1,34 @@
+/*sum(a, b) {
+  print(a + b);
+}*/
+
+/*void sum(a, b) {
+  print(a + b);
+}
+
+sum(a, b) {
+  return a + b;
+}*/
+
+int sum(int a, int b) {
+  return a + b;
+}
+
+int exec(int a, int b, int Function(int, int) fn) {
+  return fn(a, b);
+}
+
+class Product {
+  String name;
+  double price;
+
+  /*Product(String name, double price) {
+    this.name = name;
+    this.price = price;
+  }*/
+  Product({this.name = '', this.price = 0.0});
+}
+
 main() {
   int a = 3;
   double b = 3.1;
@@ -47,4 +78,24 @@ main() {
 
   const cc = 5;
   // cc = 7;
+
+  //sum(2, 3);
+  print(sum(2, 3));
+
+  /*final r = exec(2, 3, (a, b) {
+    return a - b;
+  });*/
+
+  final r = exec(2, 3, (a, b) => a - b);
+
+  print('The result is $r!!!');
+
+  /* var p1 = new Product();
+  p1.name = 'Pen';
+  p1.price = 4.59;*/
+
+  //var p1 = new Product('Pen', 4.59);
+  var p1 = new Product(name: 'Pen', price: 4.59);
+
+  print('The product ${p1.name} have price R\$ ${p1.price}');
 }
