@@ -3,18 +3,20 @@ import 'package:flutter/material.dart';
 main() => runApp(QuestionsApp());
 
 class QuestionsApp extends StatelessWidget {
+  final questionSelected = 0;
+
   final questions = [
     'What is your favorite color?',
     'What is your favorite pet?'
   ];
 
   void answer() {
-    print('Ask answered');
+    print(questionSelected);
   }
 
   void Function() functionThatReturnAnotherFunction() {
     return () {
-      print('Ask answered #02!');
+      print('Question answered #02!');
     };
   }
 
@@ -30,7 +32,7 @@ class QuestionsApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text(questions[0]),
+            Text(questions[questionSelected]),
             ElevatedButton(
               //style: ElevatedButton.styleFrom(padding: EdgeInsets.all(50)),
               child: Text('Question 1'),
@@ -39,7 +41,7 @@ class QuestionsApp extends StatelessWidget {
             ElevatedButton(
               child: Text('Question 2'),
               onPressed: () {
-                print('The ask 2 is selected');
+                print('The question 2 is selected');
               },
             ),
             ElevatedButton(
