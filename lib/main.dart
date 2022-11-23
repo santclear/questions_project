@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 main() => runApp(QuestionsApp());
 
-class QuestionsApp extends StatelessWidget {
-  final questionSelected = 0;
+class QuestionsAppState extends State<QuestionsApp> {
+  var questionSelected = 0;
 
   final questions = [
     'What is your favorite color?',
@@ -11,6 +11,9 @@ class QuestionsApp extends StatelessWidget {
   ];
 
   void answer() {
+    setState(() {
+      questionSelected++;
+    });
     print(questionSelected);
   }
 
@@ -56,5 +59,11 @@ class QuestionsApp extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class QuestionsApp extends StatefulWidget {
+  QuestionsAppState createState() {
+    return QuestionsAppState();
   }
 }
