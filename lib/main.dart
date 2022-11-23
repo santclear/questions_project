@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 main() => runApp(QuestionsApp());
 
-class QuestionsAppState extends State<QuestionsApp> {
-  var questionSelected = 0;
+class _QuestionsAppState extends State<QuestionsApp> {
+  var _questionSelected = 0;
 
   final questions = [
     'What is your favorite color?',
     'What is your favorite pet?'
   ];
 
-  void answer() {
+  void _answer() {
     setState(() {
-      questionSelected++;
+      _questionSelected++;
     });
-    print(questionSelected);
+    print(_questionSelected);
   }
 
   void Function() functionThatReturnAnotherFunction() {
@@ -35,25 +35,19 @@ class QuestionsAppState extends State<QuestionsApp> {
         ),
         body: Column(
           children: [
-            Text(questions[questionSelected]),
+            Text(questions[_questionSelected]),
             ElevatedButton(
               //style: ElevatedButton.styleFrom(padding: EdgeInsets.all(50)),
               child: Text('Question 1'),
-              onPressed: answer,
+              onPressed: _answer,
             ),
             ElevatedButton(
               child: Text('Question 2'),
-              onPressed: () {
-                print('The question 2 is selected');
-              },
+              onPressed: _answer,
             ),
             ElevatedButton(
               child: const Text('Question 3'),
-              onPressed: () => print('The question 3 is selected'),
-            ),
-            ElevatedButton(
-              child: Text('Question 4'),
-              onPressed: functionThatReturnAnotherFunction(),
+              onPressed: _answer,
             )
           ],
         ),
@@ -63,7 +57,7 @@ class QuestionsAppState extends State<QuestionsApp> {
 }
 
 class QuestionsApp extends StatefulWidget {
-  QuestionsAppState createState() {
-    return QuestionsAppState();
+  _QuestionsAppState createState() {
+    return _QuestionsAppState();
   }
 }
