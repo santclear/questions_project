@@ -37,6 +37,12 @@ class _QuestionsAppState extends State<QuestionsApp> {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> answers = [];
+
+    for(var answerText in questions[_questionSelected].cast()['answers']) {
+      answers.add(Answer(answerText, _answer));
+    }
+
     return MaterialApp(
       theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -48,9 +54,7 @@ class _QuestionsAppState extends State<QuestionsApp> {
         body: Column(
           children: [
             Question(questions[_questionSelected]['text'].toString()),
-            Answer('Answer 1', _answer),
-            Answer('Answer 2', _answer),
-            Answer('Answer 3', _answer)
+            ...answers
           ],
         ),
       ),
