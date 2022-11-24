@@ -16,7 +16,6 @@ class _QuestionsAppState extends State<QuestionsApp> {
     setState(() {
       _questionSelected++;
     });
-    print(_questionSelected);
   }
 
   void Function() functionThatReturnAnotherFunction() {
@@ -38,9 +37,9 @@ class _QuestionsAppState extends State<QuestionsApp> {
         body: Column(
           children: [
             Question(questions[_questionSelected]),
-            const Answer('Answer 1'),
-            const Answer('Answer 2'),
-            const Answer('Answer 3')
+            Answer('Answer 1', _answer),
+            Answer('Answer 2', _answer),
+            Answer('Answer 3', _answer)
           ],
         ),
       ),
