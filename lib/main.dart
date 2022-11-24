@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './question.dart';
+import 'answer.dart';
 
 main() => runApp(QuestionsApp());
 
@@ -32,24 +33,14 @@ class _QuestionsAppState extends State<QuestionsApp> {
           materialTapTargetSize: MaterialTapTargetSize.padded),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Questions'),
+          title: const Text('Questions'),
         ),
         body: Column(
           children: [
             Question(questions[_questionSelected]),
-            ElevatedButton(
-              //style: ElevatedButton.styleFrom(padding: EdgeInsets.all(50)),
-              child: Text('Question 1'),
-              onPressed: _answer,
-            ),
-            ElevatedButton(
-              child: Text('Question 2'),
-              onPressed: _answer,
-            ),
-            ElevatedButton(
-              child: const Text('Question 3'),
-              onPressed: _answer,
-            )
+            const Answer('Answer 1'),
+            const Answer('Answer 2'),
+            const Answer('Answer 3')
           ],
         ),
       ),
