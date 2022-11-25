@@ -38,10 +38,6 @@ class _QuestionsAppState extends State<QuestionsApp> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> answers = hasQuestionSelected
-        ? _questions[_questionSelected].cast()['answers']
-        : [];
-
     return MaterialApp(
       theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -51,7 +47,10 @@ class _QuestionsAppState extends State<QuestionsApp> {
           title: const Text('Questions'),
         ),
         body: hasQuestionSelected
-            ? Quiz(_questionSelected, _questions, answers, _answer)
+            ? Quiz(
+                questions: _questions,
+                questionSelected: _questionSelected,
+                onAnswer: _answer)
             : const Result(),
       ),
     );
