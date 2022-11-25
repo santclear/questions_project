@@ -23,7 +23,7 @@ class _QuestionsAppState extends State<QuestionsApp> {
   ];
 
   void _answer() {
-    if(hasQuestionSelected) {
+    if (hasQuestionSelected) {
       setState(() {
         _questionSelected++;
       });
@@ -48,17 +48,18 @@ class _QuestionsAppState extends State<QuestionsApp> {
         appBar: AppBar(
           title: const Text('Questions'),
         ),
-        body: hasQuestionSelected ? Column(
-          children: [
-            Question(_questions[_questionSelected]['text'].toString()),
-            ...answers.map((t) => Answer(t, _answer)).toList()
-          ],
-        ) : const Center(
-          child: Text(
-              'Congratulations!',
-            style: TextStyle(fontSize: 28),
-          )
-        ),
+        body: hasQuestionSelected
+            ? Column(
+                children: [
+                  Question(_questions[_questionSelected]['text'].toString()),
+                  ...answers.map((t) => Answer(t, _answer)).toList()
+                ],
+              )
+            : const Center(
+                child: Text(
+                'Congratulations!',
+                style: TextStyle(fontSize: 28),
+              )),
       ),
     );
   }
