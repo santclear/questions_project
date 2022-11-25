@@ -69,7 +69,7 @@ class _QuestionsAppState extends State<QuestionsApp> {
                 questions: _questions,
                 questionSelected: _questionSelected,
                 onAnswer: _answer)
-            : const Result(),
+            : Result(_totalScore),
       ),
     );
   }
