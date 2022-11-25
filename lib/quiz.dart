@@ -8,11 +8,11 @@ class Quiz extends StatelessWidget {
   final List<Map<String, Object>> questions;
   final Function() onAnswer;
 
-  const Quiz({
-    required this.questions,
-    required this.questionSelected,
-    required this.onAnswer,
-    super.key});
+  const Quiz(
+      {required this.questions,
+      required this.questionSelected,
+      required this.onAnswer,
+      super.key});
 
   bool get hasQuestionSelected {
     return questionSelected < questions.length;
@@ -20,15 +20,16 @@ class Quiz extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    List<String> answers = hasQuestionSelected
-        ? questions[questionSelected].cast()['answers']
+    List<Map<String, Object>> answers = hasQuestionSelected
+        ? questions[questionSelected]['answers'] as List<Map<String, Object>>
         : [];
 
     return Column(
       children: [
         Question(questions[questionSelected]['text'].toString()),
-        ...answers.map((t) => Answer(t, onAnswer)).toList()
+        ...answers
+            .map((answer) => Answer(answer['text'] as String, onAnswer))
+            .toList()
       ],
     );
   }
