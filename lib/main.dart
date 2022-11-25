@@ -7,7 +7,7 @@ main() => runApp(QuestionsApp());
 class _QuestionsAppState extends State<QuestionsApp> {
   var _questionSelected = 0;
 
-  final List<Map<String, Object>> questions = [
+  final List<Map<String, Object>> _questions = const [
     {
       'text': 'What is your favorite color?',
       'answers': ['Black', 'Red', 'Green', 'White']
@@ -23,21 +23,22 @@ class _QuestionsAppState extends State<QuestionsApp> {
   ];
 
   void _answer() {
-    setState(() {
-      _questionSelected++;
-    });
-    print(_questionSelected);
+    if(hasQuestionSelected) {
+      setState(() {
+        _questionSelected++;
+      });
+    }
   }
 
-  void Function() functionThatReturnAnotherFunction() {
-    return () {
-      print('Question answered #02!');
-    };
+  bool get hasQuestionSelected {
+    return _questionSelected < _questions.length;
   }
 
   @override
   Widget build(BuildContext context) {
-    List<String> answers = questions[_questionSelected].cast()['widgets'];
+    List<String> answers = hasQuestionSelected
+        ? _questions[_questionSelected].cast()['answers']
+        : [];
 
     return MaterialApp(
       theme: ThemeData(
@@ -47,12 +48,12 @@ class _QuestionsAppState extends State<QuestionsApp> {
         appBar: AppBar(
           title: const Text('Questions'),
         ),
-        body: Column(
+        body: hasQuestionSelected ? Column(
           children: [
-            Question(questions[_questionSelected]['text'].toString()),
+            Question(_questions[_questionSelected]['text'].toString()),
             ...answers.map((t) => Answer(t, _answer)).toList()
           ],
-        ),
+        ) : null,
       ),
     );
   }
