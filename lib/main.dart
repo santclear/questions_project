@@ -10,15 +10,15 @@ class _QuestionsAppState extends State<QuestionsApp> {
   final List<Map<String, Object>> questions = [
     {
       'text': 'What is your favorite color?',
-      'answers': ['Black','Red','Green','White']
+      'answers': ['Black', 'Red', 'Green', 'White']
     },
     {
       'text': 'What is your favorite pet?',
-      'answers': ['Rabbit','Snake','Elephant','Lion']
+      'answers': ['Rabbit', 'Snake', 'Elephant', 'Lion']
     },
     {
       'text': 'What is your favorite instructor?',
-      'answers': ['Maria','João','Leo','Pedro']
+      'answers': ['Maria', 'João', 'Leo', 'Pedro']
     }
   ];
 
@@ -37,11 +37,7 @@ class _QuestionsAppState extends State<QuestionsApp> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> answers = [];
-
-    for(var answerText in questions[_questionSelected].cast()['answers']) {
-      answers.add(Answer(answerText, _answer));
-    }
+    List<String> answers = questions[_questionSelected].cast()['widgets'];
 
     return MaterialApp(
       theme: ThemeData(
@@ -54,7 +50,7 @@ class _QuestionsAppState extends State<QuestionsApp> {
         body: Column(
           children: [
             Question(questions[_questionSelected]['text'].toString()),
-            ...answers
+            ...answers.map((t) => Answer(t, _answer)).toList()
           ],
         ),
       ),
