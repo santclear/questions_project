@@ -8,43 +8,46 @@ main() => runApp(QuestionsApp());
 
 class _QuestionsAppState extends State<QuestionsApp> {
   var _questionSelected = 0;
+  var _totalScore = 0;
 
   final List<Map<String, Object>> _questions = const [
     {
       'text': 'What is your favorite color?',
       'answers': [
-        {'text': 'Black', 'grade': 10},
-        {'text': 'Red', 'grade': 10},
-        {'text': 'Green', 'grade': 10},
-        {'text': 'White', 'grade': 10},
+        {'text': 'Black', 'score': 10},
+        {'text': 'Red', 'score': 5},
+        {'text': 'Green', 'score': 3},
+        {'text': 'White', 'score': 1},
       ]
     },
     {
       'text': 'What is your favorite pet?',
       'answers': [
-        {'text': 'Rabbit', 'grade': 10},
-        {'text': 'Snake', 'grade': 5},
-        {'text': 'Elephant', 'grade': 3},
-        {'text': 'Lion', 'grade': 1},
+        {'text': 'Rabbit', 'score': 10},
+        {'text': 'Snake', 'score': 5},
+        {'text': 'Elephant', 'score': 3},
+        {'text': 'Lion', 'score': 1},
       ]
     },
     {
       'text': 'What is your favorite instructor?',
       'answers': [
-        {'text': 'Leo', 'grade': 10},
-        {'text': 'Maria', 'grade': 5},
-        {'text': 'João', 'grade': 3},
-        {'text': 'Pedro', 'grade': 1},
+        {'text': 'Leo', 'score': 10},
+        {'text': 'Maria', 'score': 5},
+        {'text': 'João', 'score': 3},
+        {'text': 'Pedro', 'score': 1},
       ]
     }
   ];
 
-  void _answer() {
+  void _answer(int score) {
     if (hasQuestionSelected) {
       setState(() {
         _questionSelected++;
+        _totalScore += score;
       });
     }
+    print(_totalScore);
   }
 
   bool get hasQuestionSelected {
