@@ -7,7 +7,7 @@ import 'result.dart';
 main() => runApp(QuestionsApp());
 
 class _QuestionsAppState extends State<QuestionsApp> {
-  var _questionSelected = 0;
+  var _selectedQuestion = 0;
   var _totalScore = 0;
 
   final List<Map<String, Object>> _questions = const [
@@ -41,17 +41,17 @@ class _QuestionsAppState extends State<QuestionsApp> {
   ];
 
   void _answer(int score) {
-    if (hasQuestionSelected) {
+    if (hasSelectedQuestion) {
       setState(() {
-        _questionSelected++;
+        _selectedQuestion++;
         _totalScore += score;
       });
     }
     print(_totalScore);
   }
 
-  bool get hasQuestionSelected {
-    return _questionSelected < _questions.length;
+  bool get hasSelectedQuestion {
+    return _selectedQuestion < _questions.length;
   }
 
   @override
@@ -64,10 +64,10 @@ class _QuestionsAppState extends State<QuestionsApp> {
         appBar: AppBar(
           title: const Text('Questions'),
         ),
-        body: hasQuestionSelected
+        body: hasSelectedQuestion
             ? Quiz(
                 questions: _questions,
-                questionSelected: _questionSelected,
+                selectedQuestion: _selectedQuestion,
                 onAnswer: _answer)
             : Result(_totalScore),
       ),

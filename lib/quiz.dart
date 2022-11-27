@@ -4,29 +4,29 @@ import 'answer.dart';
 import 'question.dart';
 
 class Quiz extends StatelessWidget {
-  final int questionSelected;
+  final int selectedQuestion;
   final List<Map<String, Object>> questions;
   final Function(int) onAnswer;
 
   const Quiz(
       {required this.questions,
-      required this.questionSelected,
+      required this.selectedQuestion,
       required this.onAnswer,
       super.key});
 
   bool get hasQuestionSelected {
-    return questionSelected < questions.length;
+    return selectedQuestion < questions.length;
   }
 
   @override
   Widget build(BuildContext context) {
     List<Map<String, Object>> answers = hasQuestionSelected
-        ? questions[questionSelected]['answers'] as List<Map<String, Object>>
+        ? questions[selectedQuestion]['answers'] as List<Map<String, Object>>
         : [];
 
     return Column(
       children: <Widget>[
-        Question(questions[questionSelected]['text'].toString()),
+        Question(questions[selectedQuestion]['text'].toString()),
         ...answers
             .map((answer) => Answer(
                   answer['text'].toString(),
