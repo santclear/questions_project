@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
   final int score;
-  final void Function() onRestartQuiz;
+  final void Function(String) onRestartQuiz;
 
   const Result(this.score, this.onRestartQuiz, {super.key});
 
@@ -29,7 +29,7 @@ class Result extends StatelessWidget {
           style: const TextStyle(fontSize: 28),
         )),
         TextButton(
-          onPressed: onRestartQuiz,
+          onPressed: () => onRestartQuiz('Cool!'),
           child: const Text(
             "Restart?",
             style: TextStyle(fontSize: 18, color: Colors.blue),

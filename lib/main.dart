@@ -49,11 +49,12 @@ class _QuestionsAppState extends State<QuestionsApp> {
     }
   }
 
-  void _restartQuiz() {
+  void _restartQuiz(String buttonName) {
     setState(() {
       _selectedQuestion = 0;
       _totalScore = 0;
     });
+    print(buttonName);
   }
 
   bool get hasSelectedQuestion {
